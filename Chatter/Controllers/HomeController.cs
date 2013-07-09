@@ -58,6 +58,10 @@ namespace Chatter.Controllers
             myMessage.EnableClickTracking(true);
             myMessage.EnableOpenTracking();
 
+            // add tracking
+            myMessage.SetCategory("Testing");
+            myMessage.AddUniqueIdentifiers(new Dictionary<string, string>{{"Username", User.Identity.Name}});
+
             // send it
             var creds = new NetworkCredential(username, password);
             var transport = SMTP.GetInstance(creds);
